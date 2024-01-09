@@ -1,8 +1,27 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+
+const SpoqaHanSansNeo = localFont({
+  src: [
+    {
+      path: './fonts/SpoqaHanSansNeo-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/SpoqaHanSansNeo-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/SpoqaHanSansNeo-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={SpoqaHanSansNeo.className}>{children}</body>
     </html>
   )
 }
