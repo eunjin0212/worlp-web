@@ -1,33 +1,13 @@
 "use client"
 import { useEffect, useState } from 'react'
+import type { Feed, FeedList } from '@/types/feed'
 import Image from 'next/image'
-import styles from '@/styles/page.module.css'
 import appstore from '@/assets/appstore.svg'
+import styles from '@/styles/page.module.css'
+import api from '@/api/api'
 import SearchInput from '@/components/searchInput'
 import Chip from '@/components/chip'
-import api from '@/api/api'
-
-interface Feed {
-  id: string;
-  cheapest: {
-    vendorProductID: string;
-    vendor: string;
-    title: string;
-    thumbnail: string;
-    link: string;
-    price: {
-      listPrice: {
-        decimal: number,
-        fraction: number,
-        currency: string;
-      }
-    },
-  }
-}
-
-interface FeedList {
-  list: Feed[]
-}
+import Item from '@/components/Item'
 
 const categories = ['전체', '베스트', '할인율 높은순', '신상품']
 const Home = () => {
@@ -80,10 +60,12 @@ const Home = () => {
             />
           ))}
         </div>
-        {feedList.map((item) => (
-          <div key={item.id}>{item.id}</div>
-        ))}
       </header>
+      <section className={styles['feed-list']}>
+        {feedList.map((item) => (
+          <Item key={item.id} item={item}/>
+        ))}
+      </section>
     </main>
   )
 }
