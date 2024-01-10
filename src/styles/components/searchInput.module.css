@@ -1,6 +1,7 @@
 .input-wrapper {
   height: 3.5rem;
   width: 100%;
+  max-width: 23.063rem;
   background-color: var(--secondary);
   border-radius: 3.125rem;
   padding: 0.5rem 0;
