@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.438rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 23.063rem;
+  gap: 1.5rem;
+}
+
+.logo {
+  width: 4.375rem;
+  height: 4.375rem;
+  position: relative;
+}
