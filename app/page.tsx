@@ -1,9 +1,9 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from '@/styles/page.module.css'
 import appstore from '@/assets/appstore.svg'
-import SearchInput from '../components/searchInput'
+import SearchInput from '@/components/searchInput'
 import Chip from '@/components/chip'
 import api from '@/api/api'
 
@@ -30,9 +30,10 @@ interface FeedList {
 }
 
 const categories = ['전체', '베스트', '할인율 높은순', '신상품']
-export default function Home() {
+const Home = () => {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('전체')
+  const [feedList, setFeedList] = useState<Feed[]>([])
 
   const handleSubmit = async () => {
     console.log('enter')
@@ -43,13 +44,19 @@ export default function Home() {
     console.log(value)
   }
 
-  const fetch = async () => {
+  const getData = async () => {
     try {
-      const { data } = await api.get('feed/v1')
+      const { data }: { data: FeedList } = await api.get('feed/v1')
+      setFeedList(data.list)
     } catch (error) {
       console.error(error)
     }
   }
+
+  useEffect(() => {
+    getData()
+    return () => { }
+  }, [])
 
   return (
     <main className={styles.main}>
@@ -73,7 +80,12 @@ export default function Home() {
             />
           ))}
         </div>
+        {feedList.map((item) => (
+          <div key={item.id}>{item.id}</div>
+        ))}
       </header>
     </main>
   )
 }
+
+export default Home
