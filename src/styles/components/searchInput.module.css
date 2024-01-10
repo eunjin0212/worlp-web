@@ -1,0 +1,48 @@
+.input-wrapper {
+  height: 3.5rem;
+  width: 100%;
+  background-color: var(--secondary);
+  border-radius: 3.125rem;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 0 0.969rem;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 0.25rem;
+}
+
+.input-wrapper input:hover,
+.input-wrapper input:active,
+.input-wrapper input:focus,
+.input-wrapper input:focus-visible,
+.input-wrapper input {
+  border: none;
+  outline: 0;
+}
+
+.input-wrapper input::placeholder,
+.input-wrapper input {
+  font-size: 1.063rem;
+}
+
+.input-wrapper input {
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--gray);
+}
