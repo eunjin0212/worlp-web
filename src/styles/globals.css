@@ -6,11 +6,6 @@
   --gray: #C1C1C7;
 }
 
-@media screen and (max-width: 600px) {
-  :root {
-    --font-size: 14px;
-  }
-}
 *,
 *::before,
 *::after {
@@ -46,6 +41,7 @@ body {
   max-width: 100vw;
   min-height: 100vh;
   line-height: 1.5;
+  margin: 0;
 }
 
 h1,
@@ -89,4 +85,16 @@ textarea:not([rows]) {
 
 :target {
   scroll-margin-block: 5ex;
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  :root {
+    --font-size: 12px;
+  }
 }
