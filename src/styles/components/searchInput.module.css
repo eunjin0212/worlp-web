@@ -36,6 +36,7 @@
 .input-wrapper input::placeholder,
 .input-wrapper input {
   font-size: 1.063rem;
+  font-weight: 400;
 }
 
 .input-wrapper input {
