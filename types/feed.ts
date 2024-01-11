@@ -24,6 +24,11 @@ export interface Feed {
   }
 }
 
+export interface Next {
+  startFrom?: string;
+  limit: number;
+}
 export interface FeedList {
-  list: Feed[]
+  list: Feed[];
+  next: Next;
 }

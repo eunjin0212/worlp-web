@@ -34,10 +34,13 @@
   background-color: var(--secondary);
 }
 
-.feed-list {
+.feed-section {
   min-height: calc(100% - 17.375rem);
   width: 90%;
   max-width: 48.75rem;
+}
+
+.feed-section > div:first-of-type {
   display: grid;
   grid-template-columns: repeat(auto-fill, 10.938rem);
   column-gap: 1rem;

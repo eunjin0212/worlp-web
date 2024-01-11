@@ -10,11 +10,12 @@ interface Props {
 
 const Item = ({ item }: Props) => {
   const [loading, setLoading] = useState(false)
-  
+
   const savePercent = useMemo(() => {
     const salePrice = item.cheapest.price.discount?.amount.decimal || 0
     const originPrice = item.cheapest.price.listPrice?.decimal || 0
     const calcPrice = (salePrice / originPrice)
+    
     return isNaN(salePrice / originPrice) ? 0 : Math.floor(calcPrice * 100)
   }, [item.cheapest.price.discount?.amount.decimal, item.cheapest.price.listPrice?.decimal])
 
