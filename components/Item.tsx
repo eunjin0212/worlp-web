@@ -1,14 +1,16 @@
 import type { Feed, Price } from '@/types/feed'
+import { useMemo, useState } from 'react'
 import Image from 'next/image'
-import styles from '@/styles/components/item.module.css'
-import { useMemo } from 'react'
 import Link from 'next/link'
+import styles from '@/styles/components/item.module.css'
 
 interface Props {
   item: Feed
 }
 
 const Item = ({ item }: Props) => {
+  const [loading, setLoading] = useState(false)
+  
   const savePercent = useMemo(() => {
     const salePrice = item.cheapest.price.discount?.amount.decimal || 0
     const originPrice = item.cheapest.price.listPrice?.decimal || 0
@@ -23,17 +25,23 @@ const Item = ({ item }: Props) => {
     return item?.decimal.toLocaleString(locale)
   }
 
+  const handleImageLoad = () => {
+    setLoading(false)
+  }
+
   return (
-    <Link href={item.cheapest.link}>
-      <ul className={styles['item-component']}>
-        <li className={styles['item__image-wrapper']}>
-          <Image
-            src={item.cheapest.thumbnail}
-            alt={item.cheapest.title}
-            fill
-            sizes='10.938rem'
-            priority
-          />
+    <Link href={item.cheapest.link} className={styles['item-component']}>
+      <ul>
+        <li className={[styles['item__image-wrapper'], loading && styles['item__image-wrapper--loading']].join(' ')}>
+          {loading ? <div className={styles['loading-spinner']}></div> :
+            <Image
+              src={item.cheapest.thumbnail}
+              alt={item.cheapest.title}
+              fill
+              sizes='10.938rem'
+              priority
+              onLoad={handleImageLoad}
+            />}
           <div className={styles['item__price-wrapper']}>
             <p>
               -{savePercent}%
