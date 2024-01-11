@@ -17,6 +17,12 @@ const Home = () => {
 
   const handleSubmit = async () => {
     console.log('enter')
+    try {
+      const { data }: { data: Feed[] } = await api.get(`item/v1/items?term=${search}`)
+      setFeedList(data)
+    } catch (error) {
+      
+    }
   }
 
   const handleClick = (value: string) => {
@@ -61,6 +67,7 @@ const Home = () => {
           ))}
         </div>
       </header>
+      <p className={styles['separator']}></p>
       <section className={styles['feed-list']}>
         {feedList.map((item) => (
           <Item key={item.id} item={item}/>

@@ -27,6 +27,13 @@
   gap: 0.625rem;
 }
 
+.separator {
+  margin: 26px 0 34px;
+  height: 1px;
+  width: 100%;
+  background-color: var(--secondary);
+}
+
 .feed-list {
   min-height: calc(100% - 17.375rem);
   width: 90%;
@@ -38,5 +45,6 @@
   grid-template-rows: repeat(auto-fill, 14.438rem);
   justify-content: center;
   align-items: center;
+
 }
 
