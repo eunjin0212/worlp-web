@@ -1,7 +1,7 @@
-interface Price {
+export interface Price {
   decimal: number;
   fraction: number;
-  currency: string;
+  currency: 'KRW' | 'USD';
 }
 
 export interface Feed {
