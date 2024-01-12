@@ -36,6 +36,10 @@ const Item = ({ item }: Props) => {
     UNAVAILABLE: '구매불가',
   }
 
+  const brand = {
+    AMAZON_US: '아마존'
+  } as { [key: string]: string }
+
   return (
     <Link href={item.cheapest.link} className={styles['item-component']} target='_blank'>
       <ul>
@@ -72,7 +76,7 @@ const Item = ({ item }: Props) => {
           </div>
         </li>
         <li className={styles['item__brand-name']}>
-          {item.cheapest.vendor}
+          {brand[item.cheapest.vendor]}
         </li>
         <li className={styles['item__name']}>
           {item.cheapest.title}
