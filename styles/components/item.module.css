@@ -52,11 +52,11 @@
 }
 
 .item__price--sales {
-  color: var(--orange)
+  color: var(--orange);
 }
 
-.item__price--error {
-  color: var(--gray)
+.item__price--error > p {
+  color: var(--gray) !important;
 }
 
 .item__price-wrapper p:last-of-type span:last-of-type {

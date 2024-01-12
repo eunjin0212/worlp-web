@@ -32,8 +32,8 @@ const Item = ({ item }: Props) => {
 
   const notBuyReason = {
     NO_BUY_BOX: '가격 정보 없음',
-    UNKNOWN: '알 수 없음',
-    UNAVAILABLE: '구매 불가',
+    UNKNOWN: '알수없음',
+    UNAVAILABLE: '구매불가',
   }
 
   return (
@@ -49,14 +49,14 @@ const Item = ({ item }: Props) => {
               priority
               onLoad={handleImageLoad}
             />}
-          <div className={styles['item__price-wrapper']}>
+          <div className={[styles['item__price-wrapper'], item.cheapest.price.noPriceReason && styles['item__price--error']].join(' ')}>
             <p>
-              {savePercent ? `-${savePercent}%` : ''}
+              {
+                item.cheapest.price.noPriceReason ? notBuyReason[item.cheapest.price?.noPriceReason] : `-${savePercent}%`
+              }
             </p>
             {item.cheapest.price.noPriceReason
-              ? <p className={styles['item__price--error']}>
-                {notBuyReason[item.cheapest.price.noPriceReason]}
-              </p>
+              ? null
               : <p>
                 {<span className={styles['item__price--origin']}>
                   {currency(item.cheapest.price.listPrice?.currency)}
