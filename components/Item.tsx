@@ -63,13 +63,13 @@ const Item = ({ item }: Props) => {
               ? null
               : <p>
                 {<span className={styles['item__price--origin']}>
-                  {currency(item.cheapest.price.listPrice?.currency)}
-                  {price(item.cheapest.price.listPrice)}
+                  {currency(item.cheapest.price?.listPrice?.currency)}
+                  {price(item.cheapest.price?.listPrice)}
                 </span>}
                 {savePercent
                   ? item.cheapest.price?.discount && <span className={styles['item__price--sales']}>
-                    {currency(item.cheapest.price.discount?.salePrice.currency)}
-                    {price(item.cheapest.price.discount?.salePrice)}
+                    {currency(item.cheapest.price?.discount?.salePrice.currency)}
+                    {price(item.cheapest.price?.discount?.salePrice)}
                   </span>
                   : ''}
               </p>}
