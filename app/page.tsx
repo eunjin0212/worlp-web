@@ -1,5 +1,5 @@
 "use client"
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import type { Feed, FeedList, Next } from '@/types/feed'
 import Image from 'next/image'
 import appstore from '@/assets/appstore.svg'
