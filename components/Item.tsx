@@ -53,7 +53,7 @@ const Item = ({ item }: Props) => {
               priority
               onLoad={handleImageLoad}
             />}
-          <div className={[styles['item__price-wrapper'], item.cheapest.price.noPriceReason && styles['item__price--error']].join(' ')}>
+          <div className={[styles['item__price-wrapper'], item.cheapest.price?.noPriceReason && styles['item__price--error']].join(' ')}>
             <p>
               {
                 item.cheapest.price.noPriceReason ? notBuyReason[item.cheapest.price?.noPriceReason] : `-${savePercent}%`
