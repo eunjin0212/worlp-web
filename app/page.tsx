@@ -79,7 +79,7 @@ const Home = () => {
           onChange={(e) => handleChange(e.target.value)}
           onEnter={handleSubmit}
         />
-        <div className={styles.category}>
+        {false && <div className={styles.category}>
           {categories.map((categoryItem) => (
             <Chip
               label={categoryItem}
@@ -88,7 +88,7 @@ const Home = () => {
               active={categoryItem === category}
             />
           ))}
-        </div>
+        </div>}
       </header>
       <p className={styles['separator']}></p>
       <section className={styles['feed-section']}>
