@@ -32,8 +32,8 @@ const Item = ({ item }: Props) => {
 
   const notBuyReason = {
     NO_BUY_BOX: '가격 정보 없음',
-    UNKNOWN: '알수없음',
-    UNAVAILABLE: '구매불가',
+    UNKNOWN: '알 수 없음',
+    UNAVAILABLE: '구매 불가',
   }
 
   const brand = {
