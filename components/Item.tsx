@@ -56,7 +56,9 @@ const Item = ({ item }: Props) => {
           <div className={[styles['item__price-wrapper'], item.cheapest.price?.noPriceReason && styles['item__price--error']].join(' ')}>
             <p>
               {
-                item.cheapest.price?.noPriceReason ? notBuyReason[item.cheapest.price?.noPriceReason] : `-${savePercent}%`
+                item.cheapest.price?.noPriceReason
+                  ? notBuyReason[item.cheapest.price?.noPriceReason]
+                  : (savePercent ? `-${savePercent}%` : null)
               }
             </p>
             {item.cheapest.price?.noPriceReason
@@ -67,10 +69,10 @@ const Item = ({ item }: Props) => {
                   {price(item.cheapest.price?.listPrice)}
                 </span>}
                 {savePercent
-                  ? item.cheapest.price?.discount && <span className={styles['item__price--sales']}>
+                  ? (item.cheapest.price?.discount && <span className={styles['item__price--sales']}>
                     {currency(item.cheapest.price?.discount?.salePrice.currency)}
                     {price(item.cheapest.price?.discount?.salePrice)}
-                  </span>
+                  </span>)
                   : ''}
               </p>}
           </div>
