@@ -12,12 +12,12 @@ const Item = ({ item }: Props) => {
   const [loading, setLoading] = useState(false)
 
   const savePercent = useMemo(() => {
-    const salePrice = item.cheapest.price.discount?.amount.decimal || 0
-    const originPrice = item.cheapest.price.listPrice?.decimal || 0
+    const salePrice = item.cheapest.price?.discount?.amount.decimal || 0
+    const originPrice = item.cheapest.price?.listPrice?.decimal || 0
     const calcPrice = (salePrice / originPrice)
 
     return isNaN(salePrice / originPrice) ? 0 : Math.floor(calcPrice * 100)
-  }, [item.cheapest.price.discount?.amount.decimal, item.cheapest.price.listPrice?.decimal])
+  }, [item.cheapest.price?.discount?.amount.decimal, item.cheapest.price.listPrice?.decimal])
 
   const currency = (curr: 'KRW' | 'USD' | undefined) => curr ? (curr === 'KRW' ? '₩' : '$') : ''
 
@@ -63,7 +63,7 @@ const Item = ({ item }: Props) => {
                   {price(item.cheapest.price.listPrice)}
                 </span>}
                 {savePercent
-                  ? item.cheapest.price.discount && <span className={styles['item__price--sales']}>
+                  ? item.cheapest.price?.discount && <span className={styles['item__price--sales']}>
                     {currency(item.cheapest.price.discount?.salePrice.currency)}
                     {price(item.cheapest.price.discount?.salePrice)}
                   </span>
