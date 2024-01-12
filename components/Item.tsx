@@ -15,7 +15,7 @@ const Item = ({ item }: Props) => {
     const salePrice = item.cheapest.price.discount?.amount.decimal || 0
     const originPrice = item.cheapest.price.listPrice?.decimal || 0
     const calcPrice = (salePrice / originPrice)
-    
+
     return isNaN(salePrice / originPrice) ? 0 : Math.floor(calcPrice * 100)
   }, [item.cheapest.price.discount?.amount.decimal, item.cheapest.price.listPrice?.decimal])
 
@@ -30,8 +30,14 @@ const Item = ({ item }: Props) => {
     setLoading(false)
   }
 
+  const notBuyReason = {
+    NO_BUY_BOX: '가격 정보 없음',
+    UNKNOWN: '알 수 없음',
+    UNAVAILABLE: '구매 불가',
+  }
+
   return (
-    <Link href={item.cheapest.link} className={styles['item-component']}>
+    <Link href={item.cheapest.link} className={styles['item-component']} target='_blank'>
       <ul>
         <li className={[styles['item__image-wrapper'], loading && styles['item__image-wrapper--loading']].join(' ')}>
           {loading ? <div className={styles['loading-spinner']}></div> :
@@ -45,18 +51,24 @@ const Item = ({ item }: Props) => {
             />}
           <div className={styles['item__price-wrapper']}>
             <p>
-              -{savePercent}%
+              {savePercent ? `-${savePercent}%` : ''}
             </p>
-            <p>
-              <span className={styles['item__price--origin']}>
-                {currency(item.cheapest.price.listPrice?.currency)}
-                {price(item.cheapest.price.listPrice)}
-              </span>
-              {item.cheapest.price.discount && <span className={styles['item__price--sales']}>
-                {currency(item.cheapest.price.discount?.salePrice.currency)}
-                {price(item.cheapest.price.discount?.salePrice)}
-              </span>}
-            </p>
+            {item.cheapest.price.noPriceReason
+              ? <p className={styles['item__price--error']}>
+                {notBuyReason[item.cheapest.price.noPriceReason]}
+              </p>
+              : <p>
+                {<span className={styles['item__price--origin']}>
+                  {currency(item.cheapest.price.listPrice?.currency)}
+                  {price(item.cheapest.price.listPrice)}
+                </span>}
+                {savePercent
+                  ? item.cheapest.price.discount && <span className={styles['item__price--sales']}>
+                    {currency(item.cheapest.price.discount?.salePrice.currency)}
+                    {price(item.cheapest.price.discount?.salePrice)}
+                  </span>
+                  : ''}
+              </p>}
           </div>
         </li>
         <li className={styles['item__brand-name']}>
