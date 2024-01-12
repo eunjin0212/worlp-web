@@ -56,10 +56,10 @@ const Item = ({ item }: Props) => {
           <div className={[styles['item__price-wrapper'], item.cheapest.price?.noPriceReason && styles['item__price--error']].join(' ')}>
             <p>
               {
-                item.cheapest.price.noPriceReason ? notBuyReason[item.cheapest.price?.noPriceReason] : `-${savePercent}%`
+                item.cheapest.price?.noPriceReason ? notBuyReason[item.cheapest.price?.noPriceReason] : `-${savePercent}%`
               }
             </p>
-            {item.cheapest.price.noPriceReason
+            {item.cheapest.price?.noPriceReason
               ? null
               : <p>
                 {<span className={styles['item__price--origin']}>
