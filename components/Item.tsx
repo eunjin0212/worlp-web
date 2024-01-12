@@ -17,7 +17,7 @@ const Item = ({ item }: Props) => {
     const calcPrice = (salePrice / originPrice)
 
     return isNaN(salePrice / originPrice) ? 0 : Math.floor(calcPrice * 100)
-  }, [item.cheapest.price?.discount?.amount.decimal, item.cheapest.price.listPrice?.decimal])
+  }, [item.cheapest.price?.discount?.amount.decimal, item.cheapest.price?.listPrice?.decimal])
 
   const currency = (curr: 'KRW' | 'USD' | undefined) => curr ? (curr === 'KRW' ? '₩' : '$') : ''
 
