@@ -12,10 +12,10 @@ export interface Feed {
     title: string;
     thumbnail: string;
     link: string;
-    price: {
-      noPriceReason?: 'NO_BUY_BOX' | 'UNKNOWN' | 'UNAVAILABLE';
-      listPrice?: Price,
-      discount?: {
+    price?: {
+      noPriceReason: 'NO_BUY_BOX' | 'UNKNOWN' | 'UNAVAILABLE';
+      listPrice: Price,
+      discount: {
         salePrice: Price,
         amount: Price,
         rate: number;
